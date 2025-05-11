@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sebiro Technologies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.95);
+      min-height: 100vh;
+    }
+
+    .banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      background: linear-gradient(135deg, #2857d8, #1b3cbd);
+      color: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: white;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .logo::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .banner-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      text-align: center;
+      flex: 1;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .banner {
+        flex-direction: column;
+        align-items: center;
+      }
+      .banner-title {
+        font-size: 36px;
+        margin-top: 10px;
+      }
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product {
+      background-color: #fff;
+      padding: 15px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .product img {
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .product-name {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .description, .about-section, .cta-section, .service-section {
+      background-color: #fff;
+      padding: 30px;
+      margin: 20px auto;
+      border-radius: 12px;
+      max-width: 1000px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .description ul {
+      margin: 15px 0;
+      padding-left: 20px;
+    }
+
+    .description ul li {
+      margin-bottom: 8px;
+    }
+
+    .service-section h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #2a3d66;
+    }
+
+    .service-list {
+      list-style: none;
+      padding-left: 0;
+      border-left: 4px solid #1b3cbd;
+      padding-left: 20px;
+    }
+
+    .service-list li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 12px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .service-list li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: #1b3cbd;
+      font-weight: bold;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .cta-button {
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+
+    .cta-button.secondary {
+      background-color: #28a745;
+    }
+
+    .cta-button:hover {
+      background-color: #0056b3;
+    }
+
+    .cta-button.secondary:hover {
+      background-color: #1e7e34;
+    }
+
+    .contact-section {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background: #f0f0f0;
+      flex-wrap: wrap;
+    }
+
+    .profile-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .contact-info {
+      margin-left: 20px;
+      flex: 1;
+    }
+
+    @media (max-width: 768px) {
+      .contact-section {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact-info {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+    }
+
+    .footer {
+      background-color: #f9f9f9;
+      padding: 30px 10px 10px;
+      text-align: center;
+      border-top: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 10px;
+    }
+
+    .social-icons img,
+    .payment-icon {
+      width: 32px;
+      height: 32px;
+      margin: 5px;
+      border-radius: 5px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="banner">
+      <div class="logo">
+        <img src="logo.jpg" alt="Logo">
+      </div>
+      <h1 class="banner-title">Sebiro Technologies</h1>
+    </div>
+
+    <div class="products">
+      <div class="product"><img src="print machine.jpg" alt="Print Machines"><div class="product-name">Print Machines</div></div>
+      <div class="product"><img src="ink.webp" alt="Toner"><div class="product-name">Toner Cartridge And Ink</div></div>
+      <div class="product"><img src="office supplies.jpg" alt="Office Supplies"><div class="product-name">Office Supplies</div></div>
+      <div class="product"><img src="Stationery_2.jpg" alt="Stationery"><div class="product-name">Stationery Items</div></div>
+      <div class="product"><img src="plan.png" alt="Large Prints"><div class="product-name">Large Size Print (A2/A1/A0)</div></div>
+      <div class="product"><img src="print out.jpg" alt="Print Out"><div class="product-name">B & W / Colour Print Out</div></div>
+      <div class="product"><img src="type setting.webp" alt="Type Setting"><div class="product-name">Type Settings</div></div>
+      <div class="product"><img src="art work.jpg" alt="Art Works"><div class="product-name">Art Works</div></div>
+    </div>
+
+    <div class="description">
+      <h2>Welcome to Sebiro Technologies</h2><br>
+      <p>At Sebiro Technologies, we specialize in providing premium office solutions, catering to individuals, schools, and businesses of all sizes. Based on a foundation of quality, reliability, and customer satisfaction, we offer a comprehensive range of products to meet your everyday operational needs.</p>
+    </div>
+
+    <div class="service-section">
+      <h2>Our Services</h2>
+      <ul class="service-list">
+        <li>Printers & Print Machines</li>
+        <li>Toner Cartridges & Ink</li>
+        <li>Office Supplies</li>
+        <li>Stationery Items</li>
+        <li>Large Size Prints (A2/A1/A0)</li>
+        <li>B & W / Colour Print Outs</li>
+        <li>Type Setting</li>
+        <li>Art Works</li>
+        <li>PVC ID Card Printing</li>
+        <li>Name Card (Business Card)</li>
+        <li>Catalog</li>
+        <li>Brochures</li>
+        <li>Hand Bill</li>
+        <li>Offset Print</li>
+        <li>Duplo Print</li>
+        <li>Project Binding</li>
+        <li>A4 - A0 Printing B & W / Colour Photo Print</li>
+        <li>Customer Self Service Print Out</li>
+        <li>Gift Items</li>
+        <li>School Bags</li>
+      </ul>
+    </div>
+
+    <section class="about-section">
+      <h2>About Us</h2>
+      <p>We provide <strong>premium office solutions</strong> with a focus on quality, affordability, and customer satisfaction.</p><br>
+      <ul>
+        <li><strong>Printers:</strong> Inkjet, laser, multifunction</li>
+        <li><strong>Toners & Inks:</strong> Original and compatible</li>
+        <li><strong>Stationery:</strong> Notebooks, folders, pens</li>
+        <li><strong>Office Equipment:</strong> Laminators, shredders, calculators</li>
+      </ul>
+    </section>
+   
+    <!-- Disqus Comment Section -->
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = window.location.href;  // Replace with your page's canonical URL if needed
+        this.page.identifier = document.title; // Replace with your page's unique identifier
+    };
+
+    (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://sebirotechnologies.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+
+
+    <section class="cta-section">
+      <h3>Need help choosing products?</h3>
+      <p>Contact us now!</p>
+      <div class="cta-buttons">
+        <a href="tel:0704440092" class="cta-button secondary">📞 Contact Us</a>
+      </div>
+    </section>
+
+    <div class="contact-section">
+      <div class="profile-image">
+        <img src="logo.jpg" alt="Sebiro">
+      </div>
+      <div class="contact-info">
+        <h3><strong>Sebiro Technologies - Ratnapura</strong></h3>
+        <p>📍 Address: NO 60/1 COLOMBO ROAD, RATNAPURA, SRI LANKA</p>
+        <p>📧 Email: sebirotec@gmail.com</p>
+        <p>📞 Phone: 045 22 26 546</p>
+        <p>💬 WhatsApp: 070 44 40 092</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/p/Sebiro-technologies-100089781841914/" target="_blank">
+            <img src="facebook.png" alt="Facebook">
+          </a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h4>We Accept</h4>
+        <img src="visa.png" alt="Visa" class="payment-icon">
+        <img src="mastercard.png" alt="MasterCard" class="payment-icon">
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 - Sebiro Technologies - All Rights Reserved. Version 20250103.1.0.4</p>
+    </div>
+  </footer>
+</body>
+</html>
